@@ -6,11 +6,11 @@ SDIR="$(dirname $0)"
 MENU="$(rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p '' \
 -theme $SDIR/rofi/styles.rasi \
 <<< " ♥ amber| ♥ blue| ♥ blue-gray| ♥ brown| ♥ cyan| ♥ deep-orange|\
-♥ deep-purple| ♥ green| ♥ gray| ♥ indigo| ♥ blue-light| ♥ green-light|\
-♥ lime| ♥ orange| ♥ pink| ♥ purple| ♥ red| ♥ teal| ♥ yellow| ♥ amber-dark|\
-♥ blue-dark| ♥ blue-gray-dark| ♥ brown-dark| ♥ cyan-dark| ♥ deep-orange-dark|\
-♥ deep-purple-dark| ♥ green-dark| ♥ gray-dark| ♥ indigo-dark| ♥ blue-light-dark|\
-♥ green-light-dark| ♥ lime-dark| ♥ orange-dark| ♥ pink-dark| ♥ purple-dark| ♥ red-dark| ♥ teal-dark| ♥ yellow-dark|")"
+ ♥ deep-purple| ♥ green| ♥ gray| ♥ indigo| ♥ blue-light| ♥ green-light|\
+ ♥ lime| ♥ orange| ♥ pink| ♥ purple| ♥ red| ♥ teal| ♥ yellow| ♥ amber-dark|\
+ ♥ blue-dark| ♥ blue-gray-dark| ♥ brown-dark| ♥ cyan-dark| ♥ deep-orange-dark|\
+ ♥ deep-purple-dark| ♥ green-dark| ♥ gray-dark| ♥ indigo-dark| ♥ blue-light-dark|\
+ ♥ green-light-dark| ♥ lime-dark| ♥ orange-dark| ♥ pink-dark| ♥ purple-dark| ♥ red-dark| ♥ teal-dark| ♥ yellow-dark|")"
             case "$MENU" in
 				## Light Colors
 				*amber) "$SDIR"/colors-light.sh --amber ;;
