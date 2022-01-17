@@ -18,10 +18,10 @@ suspend="  Dormir"
 logout="  Sair"
 # Confirmation
 confirm_choice() {
-	ANSWER=$(rofi -dmenu\
-		-i\
-		-no-fixed-num-lines\
-		-p "Você tem certeza? : "\
+    ANSWER=$(rofi -dmenu\
+        -i\
+        -no-fixed-num-lines\
+        -p "Você tem certeza? : "\
         -theme "$dir/confirm.rasi" | tr '[:upper:]' '[:lower:]')
     if [ "$ANSWER" = "sim" ] || [ "$ANSWER" = "s" ]; then
         return 0
