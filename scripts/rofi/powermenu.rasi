@@ -12,7 +12,6 @@
 configuration {
   show-icons:           true;
   icon-theme: 			"Papirus";
-  display-drun: 		"";
   drun-display-format:  "{name}";
   disable-history:      false;
   fullscreen:           false;
@@ -47,7 +46,7 @@ textbox-prompt-colon {
 	background-color: 				@bg1;
 	text-color: 					@fga;
 	expand: false;
-	str: "";
+    str:                            "";
 }
 
 entry {
