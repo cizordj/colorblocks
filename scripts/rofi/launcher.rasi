@@ -7,16 +7,17 @@
  *
  */
 
+@import "defaultfont.rasi"
+
 configuration {
-	font:							"Iosevka Nerd Font 10";
-    show-icons:                     true;
-	icon-theme: 					"Papirus";
-    display-drun: 					"";
-    drun-display-format:            "{name}";
-    disable-history:                false;
-    fullscreen:                     false;
-	hide-scrollbar: 				true;
-	sidebar-mode: 					false;
+    show-icons: true;
+    icon-theme: "Papirus";
+    display-drun: "";
+    drun-display-format: "{name}";
+    disable-history: false;
+    fullscreen: false;
+    hide-scrollbar: true;
+    sidebar-mode: false;
 }
 
 @import "colors.rasi"
@@ -39,7 +40,6 @@ prompt {
 	padding: 						12px 15px 12px 15px;
 	background-color: 				@bg1;
 	text-color: 					@fga;
-	font:							"Iosevka Nerd Font 12";
 }
 
 entry {

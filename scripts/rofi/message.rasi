@@ -1,11 +1,10 @@
 /* Confirm Dialog */
-
+@import "defaultfont.rasi"
 @import "colors.rasi"
 
 * {
     background-color:       @bg;
     text-color:             @fg;
-	font:				 	"Iosevka Nerd Font 10";
 }
 
 window {

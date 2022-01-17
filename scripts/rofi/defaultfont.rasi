@@ -1,0 +1,3 @@
+configuration {
+ font: "Ubuntu Mono 11";
+}
