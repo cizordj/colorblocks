@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 ## Author  : Aditya Shakya
 ## Mail    : adi1090x@gmail.com
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-dir="$(dirname $0)/rofi"
+dir="$(dirname "$0")/rofi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
 rofi_command="rofi -theme $dir/powermenu.rasi"
@@ -16,47 +16,44 @@ reboot="  Reiniciar"
 lock="  Bloquear"
 suspend="  Dormir"
 logout="  Sair"
-
 # Confirmation
-confirm_exit() {
-	rofi -dmenu\
+confirm_choice() {
+	ANSWER=$(rofi -dmenu\
 		-i\
 		-no-fixed-num-lines\
 		-p "Você tem certeza? : "\
-		-theme $dir/confirm.rasi
+        -theme "$dir/confirm.rasi" | tr '[:upper:]' '[:lower:]')
+    if [ "$ANSWER" = "sim" ] || [ "$ANSWER" = "s" ]; then
+        return 0
+    elif [ "$ANSWER" = "nao" ] || [ "$ANSWER" = "n" ]; then
+        return 1
+    else
+        msg
+        confirm_choice
+    fi
 }
 
 # Message
 msg() {
-	rofi -theme "$dir/message.rasi" -e "Opções disponíveis -  sim / s / nao / n"
+	rofi -theme "$dir/message.rasi" -e "Opções disponíveis - sim | s | nao |n"
 }
 
 # Variable passed to rofi
 options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
-chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
+chosen="$(echo "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
-    $shutdown)
-		ans=$(confirm_exit &)
-		if [[ $ans == "sim" || $ans == "SIM" || $ans == "s" || $ans == "S" ]]; then
+    "$shutdown")
+        confirm_choice && {
             loginctl -i poweroff
-		elif [[ $ans == "nao" || $ans == "NAO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
+        }
         ;;
-    $reboot)
-		ans=$(confirm_exit &)
-		if [[ $ans == "sim" || $ans == "SIM" || $ans == "s" || $ans == "S" ]]; then
+    "$reboot")
+        confirm_choice && {
             loginctl -i reboot
-		elif [[ $ans == "nao" || $ans == "NAO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
+        }
         ;;
-    $lock)
+    "$lock")
         if command -v i3lock-fancy; then
             i3lock-fancy -p
         elif command -v slock; then
@@ -67,32 +64,22 @@ case $chosen in
 			i3lock
         fi
         ;;
-    $suspend)
-		ans=$(confirm_exit &)
-		if [[ $ans == "sim" || $ans == "SIM" || $ans == "s" || $ans == "S" ]]; then
+    "$suspend")
+        confirm_choice && {
 			mpc -q pause
 			amixer set Master mute
 			systemctl suspend
-		elif [[ $ans == "nao" || $ans == "NAO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
+        }
         ;;
-    $logout)
-		ans=$(confirm_exit &)
-		if [[ $ans == "sim" || $ans == "SIM" || $ans == "s" || $ans == "S" ]]; then
-			if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
-				bspc quit
-			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
-				i3-msg exit
-			fi
-		elif [[ $ans == "nao" || $ans == "NAO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
+    "$logout")
+        confirm_choice && {
+           if [ "$DESKTOP_SESSION" = "Openbox" ]; then
+               openbox --exit
+           elif [ "$DESKTOP_SESSION" = "bspwm" ]; then
+               bspc quit
+           elif [ "$DESKTOP_SESSION" = "i3" ]; then
+               i3-msg exit
+           fi
+        }
         ;;
 esac
