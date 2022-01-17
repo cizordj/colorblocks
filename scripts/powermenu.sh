@@ -35,13 +35,14 @@ confirm_choice() {
 
 # Message
 msg() {
-	rofi -theme "$dir/message.rasi" -e "Opções disponíveis - sim | s | nao |n"
+    rofi -theme "$dir/message.rasi" -e "Opções disponíveis - sim | s | nao |n"
 }
 
 # Variable passed to rofi
 options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
-chosen="$(echo "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
+chosen="$(echo "$options" | $rofi_command -p \
+    "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
     "$shutdown")
         confirm_choice && {
@@ -60,26 +61,26 @@ case $chosen in
             slock
         elif command -v betterlockscreen; then
             betterlockscreen -l
-		elif command -v i3lock; then
-			i3lock
+        elif command -v i3lock; then
+            i3lock
         fi
         ;;
     "$suspend")
         confirm_choice && {
-			mpc -q pause
-			amixer set Master mute
-			systemctl suspend
-        }
-        ;;
-    "$logout")
-        confirm_choice && {
-           if [ "$DESKTOP_SESSION" = "Openbox" ]; then
-               openbox --exit
-           elif [ "$DESKTOP_SESSION" = "bspwm" ]; then
-               bspc quit
-           elif [ "$DESKTOP_SESSION" = "i3" ]; then
-               i3-msg exit
-           fi
-        }
+                    mpc -q pause
+                    amixer set Master mute
+                    systemctl suspend
+                }
+            ;;
+        "$logout")
+            confirm_choice && {
+                if [ "$DESKTOP_SESSION" = "Openbox" ]; then
+                    openbox --exit
+                elif [ "$DESKTOP_SESSION" = "bspwm" ]; then
+                    bspc quit
+                elif [ "$DESKTOP_SESSION" = "i3" ]; then
+                    i3-msg exit
+                fi
+            }
         ;;
 esac
