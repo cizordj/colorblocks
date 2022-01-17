@@ -39,7 +39,7 @@ case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
 		if [[ $ans == "sim" || $ans == "SIM" || $ans == "s" || $ans == "S" ]]; then
-            doas /sbin/poweroff
+            loginctl -i poweroff
 		elif [[ $ans == "nao" || $ans == "NAO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else
@@ -49,7 +49,7 @@ case $chosen in
     $reboot)
 		ans=$(confirm_exit &)
 		if [[ $ans == "sim" || $ans == "SIM" || $ans == "s" || $ans == "S" ]]; then
-            doas /sbin/reboot
+            loginctl -i reboot
 		elif [[ $ans == "nao" || $ans == "NAO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else
@@ -59,9 +59,11 @@ case $chosen in
     $lock)
         if command -v i3lock-fancy; then
             i3lock-fancy -p
-        elif [[ -f /usr/bin/betterlockscreen ]]; then
+        elif command -v slock; then
+            slock
+        elif command -v betterlockscreen; then
             betterlockscreen -l
-		elif [[ -f /usr/bin/i3lock ]]; then
+		elif command -v i3lock; then
 			i3lock
         fi
         ;;
