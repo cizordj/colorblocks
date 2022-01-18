@@ -1,10 +1,4 @@
-#!/usr/bin/env bash
-
-# Terminate already running bar instances
-killall -q polybar
-
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-cd "$(dirname $0)"
-# Launch the bar
+#!/bin/sh
+polybar-msg cmd quit
+cd "$(dirname "$0")" || exit
 polybar -q main -c config.ini &
