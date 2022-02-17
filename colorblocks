@@ -1,4 +1,4 @@
 #!/bin/sh
+cd "$(dirname "$(realpath "$0")")" || exit 1
 polybar-msg cmd quit
-cd "$(dirname "$0")" || exit
 polybar -q main -c config.ini &
