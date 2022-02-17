@@ -18,14 +18,14 @@ install:
 		install -m 0644 -v readme.md "$(DESTDIR)" && \
 		install -m 0644 -v user_modules.ini "$(DESTDIR)" && \
 		install -v -d "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/color-switch.sh "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/colors-dark.sh "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/colors-light.sh "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/launcher.sh "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/powermenu.sh "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/pywal.sh "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/random.sh "$(DESTDIR)/scripts" && \
-		install -m 0644 -v scripts/run.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/color-switch.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/colors-dark.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/colors-light.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/launcher.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/powermenu.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/pywal.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/random.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/run.sh "$(DESTDIR)/scripts" && \
 		install -v -d "$(DESTDIR)/scripts/rofi" && \
 		install -m 0644 -v scripts/rofi/colors.rasi "$(DESTDIR)/scripts/rofi" && \
 		install -m 0644 -v scripts/rofi/confirm.rasi "$(DESTDIR)/scripts/rofi" && \
