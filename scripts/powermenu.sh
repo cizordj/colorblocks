@@ -5,8 +5,9 @@
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-dir="$(dirname "$0")/rofi"
-uptime=$(uptime -p | sed -e 's/up //g')
+./sdir.sh
+dir="$SDIR/rofi"
+uptime="$(uptime -p | sed -e 's/up //g')"
 
 rofi_command="rofi -theme $dir/powermenu.rasi"
 

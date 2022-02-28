@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SDIR="$(dirname "$0")"
+./sdir.sh
 listOptions(){
 cat << EOF
  ♥ amber|

@@ -1,8 +1,9 @@
 #!/bin/sh
 
+./sdir.sh
 # Color files
 PFILE="$(dirname "$0")/../colors.ini"
-RFILE="$(dirname "$0")/rofi/colors.rasi"
+RFILE="$SDIR/rofi/colors.rasi"
 
 # Get colors
 pywal_get() {
