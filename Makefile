@@ -26,15 +26,16 @@ install:
 		install -m 0755 -v scripts/pywal.sh "$(DESTDIR)/scripts" && \
 		install -m 0755 -v scripts/random.sh "$(DESTDIR)/scripts" && \
 		install -m 0755 -v scripts/run.sh "$(DESTDIR)/scripts" && \
+		install -m 0755 -v scripts/sdir.sh "$(DESTDIR)/scripts" && \
 		install -v -d "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/colors.rasi "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/confirm.rasi "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/defaultfont.rasi "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/launcher.rasi "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/message.rasi "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/networkmenu.rasi "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/powermenu.rasi "$(DESTDIR)/scripts/rofi" && \
-		install -m 0644 -v scripts/rofi/styles.rasi "$(DESTDIR)/scripts/rofi" && \
+		install -m 0644 -v scripts/rofi_template/colors.rasi "$(DESTDIR)/scripts/rofi_template" && \
+		install -m 0644 -v scripts/rofi_template/confirm.rasi "$(DESTDIR)/scripts/rofi_template" && \
+		install -m 0644 -v scripts/rofi_template/defaultfont.rasi "$(DESTDIR)/scripts/rofi_template" && \
+		install -m 0644 -v scripts/rofi_template/launcher.rasi "$(DESTDIR)/scripts/rofi_template" && \
+		install -m 0644 -v scripts/rofi_template/message.rasi "$(DESTDIR)/scripts/rofi_template" && \
+		install -m 0644 -v scripts/rofi_template/networkmenu.rasi "$(DESTDIR)/scripts/rofi_template" && \
+		install -m 0644 -v scripts/rofi_template/powermenu.rasi "$(DESTDIR)/scripts/rofi_template" && \
+		install -m 0644 -v scripts/rofi_template/styles.rasi "$(DESTDIR)/scripts/rofi_template" && \
 		install -v -d "$(BINDIR)" && \
 		ln -s "$(DESTDIR)/colorblocks" "$(BINDIR)/colorblocks"
 
@@ -59,17 +60,18 @@ uninstall:
 		"$(DESTDIR)/scripts/pywal.sh" \
 		"$(DESTDIR)/scripts/random.sh" \
 		"$(DESTDIR)/scripts/run.sh" \
-		"$(DESTDIR)/scripts/rofi/colors.rasi" \
-		"$(DESTDIR)/scripts/rofi/confirm.rasi" \
-		"$(DESTDIR)/scripts/rofi/defaultfont.rasi" \
-		"$(DESTDIR)/scripts/rofi/launcher.rasi" \
-		"$(DESTDIR)/scripts/rofi/message.rasi" \
-		"$(DESTDIR)/scripts/rofi/networkmenu.rasi" \
-		"$(DESTDIR)/scripts/rofi/powermenu.rasi" \
-		"$(DESTDIR)/scripts/rofi/styles.rasi"
+		"$(DESTDIR)/scripts/sdir.sh" \
+		"$(DESTDIR)/scripts/rofi_template/colors.rasi" \
+		"$(DESTDIR)/scripts/rofi_template/confirm.rasi" \
+		"$(DESTDIR)/scripts/rofi_template/defaultfont.rasi" \
+		"$(DESTDIR)/scripts/rofi_template/launcher.rasi" \
+		"$(DESTDIR)/scripts/rofi_template/message.rasi" \
+		"$(DESTDIR)/scripts/rofi_template/networkmenu.rasi" \
+		"$(DESTDIR)/scripts/rofi_template/powermenu.rasi" \
+		"$(DESTDIR)/scripts/rofi_template/styles.rasi"
 	@printf 'Removing empty remaining directories\n'
 	@rmdir \
-		"$(DESTDIR)/scripts/rofi" \
+		"$(DESTDIR)/scripts/rofi_template" \
 		"$(DESTDIR)/scripts" \
 		"$(DESTDIR)"
 	@unlink "$(BINDIR)/colorblocks"
