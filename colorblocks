@@ -1,4 +1,8 @@
 #!/bin/sh
 cd "$(dirname "$(realpath "$0")")" || exit 1
+
+mkdir -p "$HOME/.cache/colorblocks"
+cp -r ./scripts/rofi_template "$HOME/.cache/colorblocks/rofi"
+
 polybar-msg cmd quit
 polybar -q main -c config.ini &
