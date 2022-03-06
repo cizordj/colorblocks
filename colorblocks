@@ -9,9 +9,15 @@ help(){
 Usage: colorblocks [options]
 
 Options:
-    -h, --help      Help message
-    -v, --version   Show version
-    -k, --kill      Kill colorblocks
+    -h, --help          Help message
+    -v, --version       Show version
+    -k, --kill          Kill colorblocks
+    -l, --launcher      Display an app launcher
+    -r, --run           Display a rofi prompt for running commands
+    -c, --color-switch  Display a rofi prompt to change the colors 
+    -R, --random        Randomize colors
+    -b, --powermenu     Display the powermenu
+    -p, --pywal         Change the colors using pywal
 EOF
 }
 
@@ -38,6 +44,30 @@ do_start(){
     polybar -q main -c config.ini &
 }
 
+display_launcher(){
+    ./scripts/launcher.sh 
+}
+
+display_command_prompt(){
+    ./scripts/run.sh
+}
+
+switch_colors(){
+    ./scripts/color-switch.sh
+}
+
+randomize_colors(){
+    ./scripts/random.sh
+}
+
+display_powermenu(){
+    ./scripts/powermenu.sh
+}
+
+utilize_pywal(){
+    ./scripts/pywal.sh
+}
+
 test ! $# -gt 0
 THERE_IS_NO_ARGUMENT=$?
 
@@ -49,6 +79,24 @@ elif [ "$1" = "-v" ] || [ "$1" = "--version" ]; then
     exit 0
 elif [ "$1" = "-k" ] || [ "$1" = "--kill" ]; then
     kill_colorblocks
+    exit 0
+elif [ "$1" = "-l" ] || [ "$1" = "--launcher" ]; then
+    display_launcher
+    exit 0
+elif [ "$1" = "-r" ] || [ "$1" = "--run" ]; then
+    display_command_prompt
+    exit 0
+elif [ "$1" = "-c" ] || [ "$1" = "--color-switch" ]; then
+    switch_colors
+    exit 0
+elif [ "$1" = "-R" ] || [ "$1" = "--random" ]; then
+    randomize_colors
+    exit 0
+elif [ "$1" = "-b" ] || [ "$1" = "--powermenu" ]; then
+    display_powermenu
+    exit 0
+elif [ "$1" = "-p" ] || [ "$1" = "--pywal" ]; then
+    utilize_pywal
     exit 0
 else
     do_start
