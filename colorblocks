@@ -1,8 +1,55 @@
 #!/bin/sh
 cd "$(dirname "$(realpath "$0")")" || exit 1
 
-mkdir -p "$HOME/.cache/colorblocks/rofi"
-cp ./scripts/rofi_template/* "$HOME/.cache/colorblocks/rofi"
+CACHE_FOLDER="$HOME/.cache/colorblocks"
+COLORSCHEMES_FOLDER="$CACHE_FOLDER/rofi"
 
-polybar-msg cmd quit
-polybar -q main -c config.ini &
+help(){
+   cat << EOF
+Usage: colorblocks [options]
+
+Options:
+    -h, --help      Help message
+    -v, --version   Show version
+    -k, --kill      Kill colorblocks
+EOF
+}
+
+version(){
+    cat << EOF
+Colorblocks v0.9
+
+License: GPL-3+
+EOF
+}
+
+kill_colorblocks() {
+    polybar-msg cmd quit
+}
+
+do_start(){
+    [ -d "$COLORSCHEMES_FOLDER" ] || {
+        mkdir "$CACHE_FOLDER"
+        mkdir "$COLORSCHEMES_FOLDER"
+        cp ./scripts/rofi_template/* "$COLORSCHEMES_FOLDER"
+    }
+
+    polybar-msg cmd quit
+    polybar -q main -c config.ini &
+}
+
+test ! $# -gt 0
+THERE_IS_NO_ARGUMENT=$?
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    help
+    exit 0
+elif [ "$1" = "-v" ] || [ "$1" = "--version" ]; then
+    version
+    exit 0
+elif [ "$1" = "-k" ] || [ "$1" = "--kill" ]; then
+    kill_colorblocks
+    exit 0
+else
+    do_start
+fi
