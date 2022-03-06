@@ -27,7 +27,7 @@ install:
 		install -m 0755 -v scripts/random.sh "$(DESTDIR)/scripts" && \
 		install -m 0755 -v scripts/run.sh "$(DESTDIR)/scripts" && \
 		install -m 0755 -v scripts/sdir.sh "$(DESTDIR)/scripts" && \
-		install -v -d "$(DESTDIR)/scripts/rofi" && \
+		install -v -d "$(DESTDIR)/scripts/rofi_template" && \
 		install -m 0644 -v scripts/rofi_template/colors.rasi "$(DESTDIR)/scripts/rofi_template" && \
 		install -m 0644 -v scripts/rofi_template/confirm.rasi "$(DESTDIR)/scripts/rofi_template" && \
 		install -m 0644 -v scripts/rofi_template/defaultfont.rasi "$(DESTDIR)/scripts/rofi_template" && \
