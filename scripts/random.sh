@@ -1,8 +1,8 @@
 #!/bin/sh
-
-SDIR="$(./scripts/sdir.sh)"
+cd "$(dirname "$0")" || exit
+SDIR="$(./sdir.sh)"
 # Color files
-PFILE="$(dirname "$0")/../colors.ini"
+PFILE="../colors.ini"
 RFILE="$SDIR/rofi/colors.rasi"
 
 # Change colors

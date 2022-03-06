@@ -5,7 +5,8 @@
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-SDIR="$(./scripts/sdir.sh)"
+cd "$(dirname "$0")" || exit
+SDIR="$(./sdir.sh)"
 dir="$SDIR/rofi"
 uptime="$(uptime -p | sed -e 's/up //g')"
 
