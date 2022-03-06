@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./sdir.sh
+SDIR="$(./scripts/sdir.sh)"
 listOptions(){
 cat << EOF
  ♥ amber|

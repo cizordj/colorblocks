@@ -1,3 +1,2 @@
 #!/bin/sh
-SDIR="$HOME/.cache/colorblocks"
-export SDIR
+printf '%s\n' "$HOME/.cache/colorblocks"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./sdir.sh
+SDIR="$(./scripts/sdir.sh)"
 # Color files
 PFILE="$(dirname "$0")/../colors.ini"
 RFILE="$SDIR/rofi/colors.rasi"
