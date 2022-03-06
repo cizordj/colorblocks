@@ -38,6 +38,7 @@ do_start(){
         mkdir "$CACHE_FOLDER"
         mkdir "$COLORSCHEMES_FOLDER"
         cp ./scripts/rofi_template/* "$COLORSCHEMES_FOLDER"
+        cp ./colors.ini "$CACHE_FOLDER"
     }
 
     polybar-msg cmd quit
