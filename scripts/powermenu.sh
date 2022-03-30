@@ -40,10 +40,17 @@ msg() {
     rofi -theme "$dir/message.rasi" -e "Opções disponíveis - sim | s | nao |n"
 }
 
-# Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options() {
+    cat << EOF
+$lock
+$suspend
+$logout
+$reboot
+$shutdown
+EOF
+}
 
-chosen="$(echo "$options" | $rofi_command -p \
+chosen="$(options | $rofi_command -p \
     "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
     "$shutdown")
