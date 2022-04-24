@@ -16,4 +16,4 @@ apt install fonts-font-awesome fonts-ubuntu rofi
 
 If you wanna see how this theme looks like, then here it is.
 
-![screenshot](https://cizordj.github.io/capturas/i3-colorblocks.png)
+![screenshot](https://cizordj.codeberg.page/capturas/i3-colorblocks.png)
